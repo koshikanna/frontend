@@ -1,0 +1,26 @@
+<br>
+<h3>Lista facturas</h3>
+<table class="table table.stripped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Pedido #</th>
+            <th>Fecha / Hora</th>
+            <th>Total</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Aqui se recorren los empleados y se enlistan en la tabla-->
+        <tr *ngFor="let facturas of facturas">
+            <td>{{facturas.id}}</td>
+            <td>{{facturas.pedido}}</td>
+            <td>{{facturas.fecha}}</td>
+            <td>${{facturas.total}}</td>
+            <!--td>{{facturas.estado}}</td-->
+            <!-- Suponiendo que el valor es 1 o 0 -->
+            <td>{{ facturas.estado | pagoEstado }}</td>
+
+        </tr>
+    </tbody>
+</table>
