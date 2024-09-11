@@ -1,5 +1,5 @@
 import swal from 'sweetalert2';
-import { Router } from '@angular/router';import { EmpleadoService } from '../../../servicios/empleado/empleado.service';
+import { Router } from '@angular/router';
 import { Facturas } from 'src/app/models/facturas/facturas';
 import { Component, OnInit } from '@angular/core';
 import { FacturasService } from 'src/app/servicios/facturas/facturas.service';
