@@ -11,7 +11,20 @@ import { FacturasService } from 'src/app/servicios/facturas/facturas.service';
 })
 export class FacturasComponent implements OnInit {
 
+  atras() {
+    if (this.page > 1){
+      this.page = this.page - 1;
+      this.ObtenerFacturas();
+    }
+  }
+
+  siguiente() {
+    this.page = this.page + 1;
+    this.ObtenerFacturas();
+  }
+
   facturas:Facturas[];
+  page: number = 1;
   constructor(private facturaServicio: FacturasService, private router:Router) { }
 
   ngOnInit(): void {
@@ -19,10 +32,41 @@ export class FacturasComponent implements OnInit {
   }
 
   private ObtenerFacturas() {
-    this.facturaServicio.listarFacturas().subscribe(dato => {
+    this.facturaServicio.listarFacturas(this.page).subscribe(dato => {
       this.facturas = dato;
     })
   }
   
+  eliminarFactura(id:number) {
+    swal({
+      title : "¿Estás seguro?",
+      text : "Confirma si deseas eliminar la factura",
+      type : "warning",
+      showCancelButton : true,
+      confirmButtonColor : '#3085d6',
+      cancelButtonColor : '#d33',
+      confirmButtonText : "Si, eliminalo",
+      cancelButtonText : "No, cancelar",
+      confirmButtonClass : "btn btn-success",
+      cancelButtonClass : "btn btn-danger",
+      buttonsStyling : true
+    }).then((result) => {
+      if (result.value) {
+        this.facturaServicio.eliminarFactura(id).subscribe(dato => {
+          console.log(dato);
+          this.ObtenerFacturas();
+          swal(
+            'Factura eliminada',
+            'La factura a sido eliminada',
+            'success'
+          )
+        });
+      }
+    })
+  }
+
+  detalleFactura(id:number) {
+    this.router.navigate(['detalle-factura',id]);
+    }
 
 }
