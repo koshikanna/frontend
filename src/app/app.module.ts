@@ -16,6 +16,7 @@ import { ListarCustomersComponent } from './components/customers/listar-customer
 import { ProductoComponent } from './components/producto/producto/producto.component';
 import { FacturasComponent } from './components/facturas/facturas/facturas.component';
 import { PagoEstadoPipe } from './pipes/pago-estado.pipe';
+import { DetalleFacturaComponent } from './components/facturas/facturas/detalle-factura/detalle-factura.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PagoEstadoPipe } from './pipes/pago-estado.pipe';
     ListarCustomersComponent,
     ProductoComponent,
     FacturasComponent,
-    PagoEstadoPipe
+    PagoEstadoPipe,
+    DetalleFacturaComponent
   ],
   imports: [
     BrowserModule,
