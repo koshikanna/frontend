@@ -7,15 +7,17 @@ import { Facturas } from 'src/app/models/facturas/facturas';
   providedIn: 'root'
 })
 export class FacturasService {
-
+    
     private baseURL = "http://localhost:8080/api/v1/facturas"
     constructor(private httpClient: HttpClient){  }
 
-    listarFacturas():Observable<Facturas[]> {
-      return this.httpClient.get<Facturas[]>(`${this.baseURL}`);
+    listarFacturas(page?: number):Observable<Facturas[]> {
+      return this.httpClient.get<Facturas[]>(`${this.baseURL}?page=${page}&size=10`);
     }
     getFacturaById(id:Number):Observable<Facturas> {
       return this.httpClient.get<Facturas>(`${this.baseURL}/buscarporid/${id}`);
     }
-  
+    eliminarFactura(id:Number):Observable<Object>{
+      return this.httpClient.delete(`${this.baseURL}/del/${id}`);
+    }
 }
