@@ -3,24 +3,34 @@
 <table class="table table.stripped">
     <thead class="table-dark">
         <tr>
-            <th>ID</th>
+            <!-- <th>ID</th> -->
             <th>Pedido #</th>
             <th>Fecha / Hora</th>
-            <th>Total</th>
+            <!-- <th>Total</th> -->
             <th>Estado</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
         <!-- Aqui se recorren los empleados y se enlistan en la tabla-->
         <tr *ngFor="let facturas of facturas">
-            <td>{{facturas.id}}</td>
+            <!-- <td>{{facturas.id}}</td> -->
             <td>{{facturas.pedido}}</td>
             <td>{{facturas.fecha}}</td>
-            <td>${{facturas.total}}</td>
+            <!-- <td>${{facturas.total}}</td> -->
             <!--td>{{facturas.estado}}</td-->
             <!-- Suponiendo que el valor es 1 o 0 -->
             <td>{{ facturas.estado | pagoEstado }}</td>
+            
+            <button (click)="detalleFactura(facturas.id)"class="btn btn-outline-info">Detalles</button>
+            <button (click)="eliminarFactura(facturas.id)" class="btn btn-outline-danger">Eliminar</button>
 
         </tr>
     </tbody>
 </table>
+<td>
+    <button (click)="atras()" class="btn btn-warning" >Anterior</button>
+    <button (click)="siguiente()" class="btn btn-success" >Siguiente</button>
+    
+    
+</td>
