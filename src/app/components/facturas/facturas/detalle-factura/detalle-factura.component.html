@@ -1,0 +1,18 @@
+<h3>Detalles de factura</h3>
+<div>
+    <div>
+        <label><b>ID : </b>{{factura.id}}</label>
+    </div>
+    <div>
+        <label><b>Pedido # : </b>{{factura.pedido}}</label>
+    </div>
+    <div>
+        <label><b>Fecha : </b>{{factura.fecha}}</label>
+    </div>
+    <div>
+        <label><b>Monto Total : </b>${{factura.total}}</label>
+    </div>
+    <div>
+        <label><b>Estado de pago : </b>{{factura.estado | pagoEstado }}</label>
+    </div>
+</div>
