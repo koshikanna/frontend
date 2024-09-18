@@ -11,6 +11,8 @@ import { FacturasService } from 'src/app/servicios/facturas/facturas.service';
 })
 export class FacturasComponent implements OnInit {
 
+  page: number = 1;
+
   atras() {
     if (this.page > 1){
       this.page = this.page - 1;
@@ -24,7 +26,7 @@ export class FacturasComponent implements OnInit {
   }
 
   facturas:Facturas[];
-  page: number = 1;
+
   constructor(private facturaServicio: FacturasService, private router:Router) { }
 
   ngOnInit(): void {
@@ -53,7 +55,7 @@ export class FacturasComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.facturaServicio.eliminarFactura(id).subscribe(dato => {
-          console.log(dato);
+          //console.log(dato);
           this.ObtenerFacturas();
           swal(
             'Factura eliminada',
